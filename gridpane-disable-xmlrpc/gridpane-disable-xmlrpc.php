@@ -9,3 +9,11 @@ function disable_x_pingback( $headers ) {
 	return $headers;
 }
 add_filter( 'wp_headers', 'disable_x_pingback' );
+
+add_filter( ‘xmlrpc_methods’, function( $methods ) {
+
+unset( $methods['pingback.ping'] );
+
+return $methods;
+
+} );
